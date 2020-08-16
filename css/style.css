@@ -164,7 +164,7 @@ html {
 	#search input, #search button {
 		font-size: 1rem
 	}
-	.footer {
+	.footer, .about-content  {
 		text-align: center !important;
 	}
 }
