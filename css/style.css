@@ -88,6 +88,12 @@ html {
 .container {
 	max-width: 1050px;
 }
+.font-8 {
+	font-size: 8px;
+}
+.font-12 {
+	font-size: 12px;
+}
 .font-13 {
 	font-size: 13px;
 }
@@ -130,6 +136,26 @@ html {
 .theme-primary-bg-color{
 	background-color: #bf0405;
 }
+.theme-primary-text-color{
+	color: #9c0000;
+}
+.list-group-item {
+    padding: 0.2rem 0rem !important;
+    background-color: transparent !important;
+    border: 0px !important;
+}
+.btn-more{
+	position: absolute;
+	bottom: 1rem;
+	right: 1rem;
+}
+.opacity-point-1{
+	background-color: rgba(0,0,0,0.1);
+}
+.img-box{
+	width: auto;
+	height: 16rem;
+}
 @media screen and (max-width: 768px) {
 	.header-logo>div>div {
 		margin: 0px auto;
@@ -164,7 +190,13 @@ html {
 	#search input, #search button {
 		font-size: 1rem
 	}
-	.footer, .about-content  {
+	.footer, .about-content {
 		text-align: center !important;
+	}
+	.media-row-center {
+		text-align: center !important;
+	}
+	.form-content {
+		padding: 1rem !important;
 	}
 }
