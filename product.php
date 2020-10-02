@@ -57,35 +57,26 @@
 						        	<a class="nav-link text-white dropdown-toggle" href="products-category.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						          		Our Products
 						        	</a>
-							        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						        	<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 							        	<ul class="nav navbar-nav">
-							        		<li>
-							          			<a class="dropdown-item" href="#">Capsule Section Machine</a>
-							          		</li>
-							          		<li>
-							          			<a class="dropdown-item" href="#">Liquid Section</a>
-							          		</li>
-							          		<li>
-							          			<a class="dropdown-item" href="#">Ointment Section</a>
-							          		</li>
-							          		<li>
-							          			<a class="dropdown-item" href="#">Tablet Section</a>
-							          		</li>
-							          		<li>
-							          			<a class="dropdown-item" href="#">SS Fabricated Items</a>
-							          		</li>
-							          		<li>
-							          			<a class="dropdown-item" href="#">P P Capping</a>
-							          		</li>
-							          		<li>
-							          			<a class="dropdown-item" href="#">Capsule Loader</a>
-							          		</li>
-							          		<li>
-							          			<a class="dropdown-item" href="#">Capsule Filling</a>
-							          		</li>
+							        		<?php 
+												$sql = "SELECT * FROM product_categories";
+												$result = $conn->query($sql);
+												if ($result->num_rows > 0) {
+													while($row = $result->fetch_assoc()) {
+											?>
+							        					<li>
+							          						<a class="dropdown-item" href="#">
+							          							<?php  echo $row['product_category_name'] ?>
+							          						</a>
+							          					</li>
+							          		<?php
+							          				}
+							          			}
+							          		?>
 							        	</ul>
 							        </div>
-						      	</li>
+						        </li>
 								<li class="nav-item">
 									<a class="nav-link text-white" href="contact-us.html">Contact Us</a>
 								</li>
@@ -106,9 +97,21 @@
 			</div>
 			<div class="container">
 				<div class="body-content bg-white">
+					<?php
+						$sql = "SELECT * FROM all_products where ID=".$product_id;
+						$result = $conn->query($sql);
+						if ($result->num_rows > 0) {
+							$row = $result->fetch_assoc();
+					?>
 					<img class="d-block w-100" src="images/template_photo_company-profile.jpg" alt="banner" />
 					<div class="p-3">
-						<h5 class="font-weight-bold text-center pt-4 pb-2 letterSpace2px text-uppercase">capsule polishing machine</h5>
+						<h5 class="font-weight-bold text-center pt-4 pb-2 letterSpace2px text-uppercase">
+						<?php
+							if($row['product_name'] != ""){
+								echo $row['product_name'];
+							}
+						?>
+						</h5>
 						<hr>
 						<div class="row mx-0 my-4">
 							<div class="col-md-1 p-2 rounded-left opacity-point-1 d-flex align-items-center justify-content-center">
@@ -120,11 +123,23 @@
 								</div>
 								<div class="text-center p-1">
 									<p class="m-0 letterSpace1px">
-										<span class="font-weight-bold font-14 theme-primary-text-color text-uppercase">Capsule polishing machine</span>
+										<span class="font-weight-bold font-14 theme-primary-text-color text-uppercase">
+											<?php
+												if($row['product_name'] != ""){
+													echo $row['product_name'];
+												}
+											?>
+										</span>
 									</p>
 									<p class="m-0 letterSpace1px">
 										<span class="font-weight-bold font-14">Product Code : </span>
-										<span class="font-13">25</span>
+										<span class="font-13">
+										<?php
+											if($row['product_code'] != ""){
+												echo $row['product_code'];
+											}
+										?>
+										</span>
 									</p>
 									<p class="m-0 letterSpace1px">										<span class="font-13">Kamal E Industries</span>
 									</p>
@@ -184,6 +199,9 @@
 							</div>
 						</div>
 						<div class="media-row-center py-2">
+							<?php
+								if($row['order_quantity'] != "") {
+							?>
 							<div class="my-4">
 								<h6 class="text-uppercase font-13 letterSpace1px font-weight-bold">price and quantity</h6>
 								<div class="row p-1 m-0 border border-light">
@@ -193,110 +211,171 @@
 												Minimum order quantity
 											</div>
 											<div class="col-6 font-12 letterSpace1px">
-												1 Piece
+												<?php echo $row['order_quantity']; ?>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
+							<?php
+								}
+							?>
+							<?php
+								if($row['type'] != "" || $row['material'] !="" || $row['computerized'] != "" || $row['control_mode'] !="") {
+							?>
 							<div class="my-4">
 								<h6 class="text-uppercase font-13 letterSpace1px font-weight-bold">product specifications</h6>
 								<div class="row p-1 m-0 border border-light">
+									<?php if($row['type'] != "") { ?>
 									<div class="col-md-6">
 										<div class="row text-left pb-1">
 											<div class="col-5 font-12 font-weight-bold letterSpace1px">
 												Type
 											</div>
 											<div class="col-7 font-12 letterSpace1px">
-												Capsule Polisher
+												<?php echo $row['type']; ?>
 											</div>
 										</div>
 									</div>
+									<?php } ?>
+									<?php if($row['material'] != "") { ?>
 									<div class="col-md-6">
 										<div class="row text-left pb-1">
 											<div class="col-5 font-12 font-weight-bold letterSpace1px">
 												Material
 											</div>
 											<div class="col-7 font-12 letterSpace1px">
-												Stainless Steel
+												<?php echo $row['material']; ?>
 											</div>
 										</div>
 									</div>
+									<?php } ?>
+									<?php if($row['computerized'] != "") { ?>
 									<div class="col-md-6">
 										<div class="row text-left pb-1">
 											<div class="col-5 font-12 font-weight-bold letterSpace1px">
 												Computerized
 											</div>
 											<div class="col-7 font-12 letterSpace1px">
-												No
+												<?php echo $row['computerized']; ?>
 											</div>
 										</div>
 									</div>
+									<?php } ?>
+									<?php if($row['control_mode'] != "") { ?>
 									<div class="col-md-6">
 										<div class="row text-left pb-1">
 											<div class="col-5 font-12 font-weight-bold letterSpace1px">
 												Control Mode
 											</div>
 											<div class="col-7 font-12 letterSpace1px">
-												Automatic
+												<?php echo $row['control_mode']; ?>
 											</div>
 										</div>
 									</div>
+									<?php } ?>
 								</div>
 							</div>
+							<?php
+								}
+							?>
+							<?php
+								if($row['description'] != "") {
+							?>
 							<div class="my-4">
 								<h6 class="text-uppercase font-13 letterSpace1px font-weight-bold">product description</h6>
 								<div class="row text-left p-1 m-0 border border-light">
 									<div class="col-md-12 font-12 letterSpace1px">
-										KEI AUTOMATIC CAPSULE INSPECTION CUM POLISHING MACHINE. The Machine does both inspection and polishing in TWO STAGES. The machine is provided with a SS hopper, a 230 v single phase vibrator fitted below the SS hopper, a SS powder collection tray, Ptfe inspection belt fitted ½ hp motor and provided with tube light for inspection of capsules. The polishing section is provided with a 1 hp motor and has 2 nylon brushes with polishing cloths covered by SS pipe, gearbox for brushing unit drive with variable speed pulley and complete with SS cover. Dust collection unit for collection of powder.
+										<?php echo $row['description']; ?>
 									</div>
 								</div>
 							</div>
+							<?php
+								}
+							?>
+							<?php
+								if($row['FOB_port'] != "" || $row['payment_terms'] !="" || $row['delivery_time'] != "" || $row['packaging_details'] !="" || $row['main_export_market'] !="" || $row['main_domestic_market'] !="") {
+							?>
 							<div class="my-4">
 								<h6 class="text-uppercase font-13 letterSpace1px font-weight-bold">trade information</h6>
 								<div class="row p-1 m-0 border border-light">
+									<?php if($row['FOB_port'] != "") { ?>
+									<div class="col-md-6">
+										<div class="row text-left pb-1">
+											<div class="col-5 font-12 font-weight-bold letterSpace1px">
+												FOB port
+											</div>
+											<div class="col-7 font-12 letterSpace1px">
+												<?php echo $row['FOB_port']; ?>
+											</div>
+										</div>
+									</div>
+									<?php } ?>
+									<?php if($row['payment_terms'] != "") { ?>
 									<div class="col-md-6">
 										<div class="row text-left pb-1">
 											<div class="col-5 font-12 font-weight-bold letterSpace1px">
 												Payment Terms
 											</div>
 											<div class="col-7 font-12 letterSpace1px">
-												Cheque
+												<?php echo $row['payment_terms']; ?>
 											</div>
 										</div>
 									</div>
+									<?php } ?>
+									<?php if($row['delivery_time'] != "") { ?>
 									<div class="col-md-6">
 										<div class="row text-left pb-1">
 											<div class="col-5 font-12 font-weight-bold letterSpace1px">
 												Delivery Time
 											</div>
 											<div class="col-7 font-12 letterSpace1px">
-												8-12 Week
+												<?php echo $row['delivery_time']; ?>
 											</div>
 										</div>
 									</div>
+									<?php } ?>
+									<?php if($row['packaging_details'] != "") { ?>
+									<div class="col-md-6">
+										<div class="row text-left pb-1">
+											<div class="col-5 font-12 font-weight-bold letterSpace1px">
+												Packaging Details
+											</div>
+											<div class="col-7 font-12 letterSpace1px">
+												<?php echo $row['packaging_details']; ?>
+											</div>
+										</div>
+									</div>
+									<?php } ?>
+									<?php if($row['main_export_market'] != "") { ?>
 									<div class="col-md-6">
 										<div class="row text-left pb-1">
 											<div class="col-5 font-12 font-weight-bold letterSpace1px">
 												Main Export Market(s)
 											</div>
 											<div class="col-7 font-12 letterSpace1px">
-												Asia, Australia, North America, South America, Eastern Europe, Western Europe, Middle East, Africa
+												<?php echo $row['main_export_market']; ?>
 											</div>
 										</div>
 									</div>
+									<?php } ?>
+									<?php if($row['main_domestic_market'] != "") { ?>
 									<div class="col-md-6">
 										<div class="row text-left pb-1">
 											<div class="col-5 font-12 font-weight-bold letterSpace1px">
 												Main Domestic Market
 											</div>
 											<div class="col-7 font-12 letterSpace1px">
-												All India
+												<?php echo $row['main_domestic_market']; ?>
 											</div>
 										</div>
 									</div>
+									<?php } ?>
 								</div>
 							</div>
+							<?php
+								}
+							?>
 						</div>
 						<div class="pt-0 pb-2">
 							<div class="my-4 form-content p-5 border rounded bg-light">
@@ -420,6 +499,11 @@
 							</div>
 						</div>
 					</div>
+					<?php
+							}else {
+								echo "<h6 class='text-center py-5 letterSpace2px font-weight-bold theme-primary-text-color text-uppercase'>something is wrong...</h6>";
+							}
+					?>
 					<div class="footer theme-secondary-bg-color px-3 pt-4">
 						<div class="row">
 							<div class="col-md-12">
