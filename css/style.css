@@ -166,6 +166,143 @@ html {
 	cursor: pointer;
    	background-color: #efefef;
 }
+.carousel-control-prev, .carousel-control-next{
+	width: 6% !important;
+}
+@media (min-width: 768px) {
+	/* show 4 items */
+	#card-carousel .carousel-inner .active,
+	#card-carousel .carousel-inner .active + .carousel-item,
+	#card-carousel .carousel-inner .active + .carousel-item + .carousel-item,
+	#card-carousel .carousel-inner .active + .carousel-item + .carousel-item + .carousel-item {
+		display: block;
+	}
+
+	#card-carousel .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left),
+	#card-carousel .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item,
+	#card-carousel .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item,
+	#card-carousel .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item + .carousel-item{
+		transition: none;
+	}
+
+	#card-carousel .carousel-inner .carousel-item-next,
+	#card-carousel .carousel-inner .carousel-item-prev {
+		position: relative;
+		transform: translate3d(0, 0, 0);
+	}
+
+	#card-carousel .carousel-inner .active.carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
+		position: absolute;
+		top: 0;
+		right: -33.3333%;
+		z-index: -1;
+		display: block;
+		visibility: visible;
+	}
+
+	/* left or forward direction */
+	#card-carousel .active.carousel-item-left + .carousel-item-next.carousel-item-left,
+	#card-carousel .carousel-item-next.carousel-item-left + .carousel-item,
+	#card-carousel .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item,
+	#card-carousel .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item + .carousel-item,
+	#card-carousel .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
+		position: relative;
+		transform: translate3d(-100%, 0, 0);
+		visibility: visible;
+	}
+
+	/* farthest right hidden item must be abso position for animations */
+	#card-carousel .carousel-inner .carousel-item-prev.carousel-item-right {
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: -1;
+		display: block;
+		visibility: visible;
+	}
+
+	/* right or prev direction */
+	#card-carousel .active.carousel-item-right + .carousel-item-prev.carousel-item-right,
+	#card-carousel .carousel-item-prev.carousel-item-right + .carousel-item,
+	#card-carousel .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item,
+	#card-carousel .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item + .carousel-item,
+	#card-carousel .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
+		position: relative;
+		transform: translate3d(100%, 0, 0);
+		visibility: visible;
+		display: block;
+		visibility: visible;
+	}
+
+
+
+	/* Best product selling Slider */
+
+	/* show 4 items */
+	#best-product-card-carousel .carousel-inner .active,
+	#best-product-card-carousel .carousel-inner .active + .carousel-item,
+	#best-product-card-carousel .carousel-inner .active + .carousel-item + .carousel-item,
+	#best-product-card-carousel .carousel-inner .active + .carousel-item + .carousel-item + .carousel-item {
+		display: block;
+	}
+
+	#best-product-card-carousel .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left),
+	#best-product-card-carousel .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item,
+	#best-product-card-carousel .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item,
+	#best-product-card-carousel .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item + .carousel-item{
+		transition: none;
+	}
+
+	#best-product-card-carousel .carousel-inner .carousel-item-next,
+	#best-product-card-carousel .carousel-inner .carousel-item-prev {
+		position: relative;
+		transform: translate3d(0, 0, 0);
+	}
+
+	#best-product-card-carousel .carousel-inner .active.carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
+		position: absolute;
+		top: 0;
+		right: -33.3333%;
+		z-index: -1;
+		display: block;
+		visibility: visible;
+	}
+
+	/* left or forward direction */
+	#best-product-card-carousel .active.carousel-item-left + .carousel-item-next.carousel-item-left,
+	#best-product-card-carousel .carousel-item-next.carousel-item-left + .carousel-item,
+	#best-product-card-carousel .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item,
+	#best-product-card-carousel .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item + .carousel-item,
+	#best-product-card-carousel .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
+		position: relative;
+		transform: translate3d(-100%, 0, 0);
+		visibility: visible;
+	}
+
+	/* farthest right hidden item must be abso position for animations */
+	#best-product-card-carousel .carousel-inner .carousel-item-prev.carousel-item-right {
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: -1;
+		display: block;
+		visibility: visible;
+	}
+
+	/* right or prev direction */
+	#best-product-card-carousel .active.carousel-item-right + .carousel-item-prev.carousel-item-right,
+	#best-product-card-carousel .carousel-item-prev.carousel-item-right + .carousel-item,
+	#best-product-card-carousel .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item,
+	#best-product-card-carousel .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item + .carousel-item,
+	#best-product-card-carousel .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
+		position: relative;
+		transform: translate3d(100%, 0, 0);
+		visibility: visible;
+		display: block;
+		visibility: visible;
+	}
+}
+
 @media screen and (max-width: 768px) {
 	.header-logo>div>div {
 		margin: 0px auto;
@@ -208,5 +345,8 @@ html {
 	}
 	.form-content {
 		padding: 1rem !important;
+	}
+	.carousel-control-prev, .carousel-control-next{
+		width: 18% !important;
 	}
 }
